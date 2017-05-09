@@ -1,0 +1,23 @@
+!!!
+%html{lang: I18n.locale}
+  %head
+    - if test?
+      :javascript
+        window.errors = []
+        window.onerror = function(a, b, c){
+          window.errors.push([a, b, c]);
+          return false; // false: don't swallow exceptions.
+        }
+    
+    %title= yield(:title)
+    -# = render 'shared/favicon'
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    
+  %body
+    -# = render 'shared/navbar_selector'
+    -# = render 'shared/flashes'
+    = yield
+    -# = render 'shared/footer'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
