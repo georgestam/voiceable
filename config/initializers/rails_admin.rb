@@ -1,4 +1,6 @@
 RailsAdmin.config do |config|
+  
+  config.parent_controller = '::ApplicationController'
 
   ### Popular gems integration
 
@@ -14,7 +16,7 @@ RailsAdmin.config do |config|
   # config.authorize_with :cancan
 
   ## == Pundit ==
-  # config.authorize_with :pundit
+  config.authorize_with :pundit
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
