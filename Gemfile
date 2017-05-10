@@ -10,7 +10,6 @@ gem 'puma'
 
 # specific for the theme
 gem 'fontello_rails_converter', '~> 0.4.6'
-gem 'remotipart', '~> 1.3', '>= 1.3.1'
 
 # Useful gems
 gem 'activerecord-session_store', '~> 1'
@@ -44,6 +43,7 @@ gem 'raygun4ruby', '~> 2.1'
 gem 'recaptcha', '~> 4.1', require: 'recaptcha/rails'
 gem 'redcarpet', '~> 3.4'
 gem 'redis'
+gem 'remotipart', '~> 1.3', '>= 1.3.1' # for rails_admin
 gem 'sass-rails', '~> 5'
 gem 'simple_calendar', '~> 2.2'
 gem 'simple_form'
