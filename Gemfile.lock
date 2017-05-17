@@ -527,7 +527,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   simple_calendar (~> 2.2)
   simple_form
-  simple_token_authentication (~> 1.15, >= 1.15.1)
+  simple_token_authentication (~> 1.15)
   simplecov (~> 0.12)
   spring
   spring-watcher-listen (~> 2.0.0)

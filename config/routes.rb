@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :respira do
       namespace :v1 do
-        resources :recordings, only: [ :index, :show, :update ]
+        resources :recordings, only: %i[index show update]
       end
     end
   end
