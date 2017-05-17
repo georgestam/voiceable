@@ -1,6 +1,6 @@
 ## Users
 
-### Create User end point [NOT WORKING]
+### Create User end point
 
 curl -H "Content-Type: application/json" -X POST -d '{ "user": { "email": "testing@email.com", "password": "password10" } }' http://localhost:3000/users.json
 

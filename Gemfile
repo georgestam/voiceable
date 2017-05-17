@@ -47,7 +47,7 @@ gem 'remotipart', '~> 1.3', '>= 1.3.1' # for rails_admin
 gem 'sass-rails', '~> 5'
 gem 'simple_calendar', '~> 2.2'
 gem 'simple_form'
-gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
+gem 'simple_token_authentication', '~> 1.15'
 gem 'therubyracer', '~> 0.12'
 gem 'tod', '~> 2.1'
 gem 'turbolinks', '~> 5.0', '>= 5.0.1'
