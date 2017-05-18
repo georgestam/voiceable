@@ -28,8 +28,7 @@ module Api
         end
 
         def recording_params
-          # params.require(:recording).permit(:data, :description)
-          params.permit(:data, :description)
+          params.require(:recording).permit(:data, :description)
         end
 
         def render_error
