@@ -2,7 +2,7 @@ RSpec.describe RegistrationsController, type: :controller do
 
   describe 'Users#create' do
     
-    let!(:user){ FactoryGirl.build :user }
+    let!(:reference){ FactoryGirl.build :user }
     
     def json
       JSON.parse(response.body)
@@ -10,10 +10,14 @@ RSpec.describe RegistrationsController, type: :controller do
     
     context 'when a correct params are given' do 
       
-      let(:params) { { {
-        email: user.email,
-        password: user.password
-      } } }
+      let(:params) { 
+        { 
+          user: {
+            email: reference.email,
+            password: reference.password
+            } 
+          } 
+        }
         
       def the_action 
         request.env["devise.mapping"] = Devise.mappings[:user] 
@@ -28,17 +32,14 @@ RSpec.describe RegistrationsController, type: :controller do
         }.by(1)
       end
       
-      it 'should return a token' do
-        expect {
-          the_action
-        }.to change { 
-          user.authentication_token
-        }.from(false).to(true)
+      it 'should create a token in the user table' do
+        the_action
+        expect(User.first.authentication_token).to be_kind_of(String)
       end
       
-      it 'returns status code 200' do
+      it 'returns status code 201' do
         the_action
-        expect(response.status).to eq(200) 
+        expect(response.status).to eq(201) 
       end
     
     end
