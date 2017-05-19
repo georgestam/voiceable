@@ -14,12 +14,15 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
       
       let(:params) { 
         {
-        description: reference.description,
-        data: reference.data,
-        id: recording.id,
-        user_email: user.email,
-        user_token: user.reload.authentication_token
-        } }
+          id: recording.id,
+          user_email: user.email,
+          user_token: user.reload.authentication_token,
+          recording: {
+            description: reference.description,
+            data: reference.data
+            }
+          } 
+        }
         
       def the_action  
         patch :update, params: params, format: :json
@@ -49,15 +52,18 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     end
       
     context 'when a wrong token is given' do
-    
+      
       let(:params) { 
         {
-        description: reference.description,
-        data: reference.data,
-        id: recording.id,
-        user_email: "wrong email",
-        user_token: "wrong token"
-      } }
+          id: recording.id,
+          user_email: "wrong email",
+          user_token: "wrong token",
+          recording: {
+            description: reference.description,
+            data: reference.data
+            }
+          } 
+        }
         
       def the_action  
         patch :update, params: params, format: :json
