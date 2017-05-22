@@ -82,6 +82,10 @@ RSpec.configure do |config|
 
 end
 
+def devise_mapping_for_rspec
+  request.env["devise.mapping"] = Devise.mappings[:user] # Code required to make devise work with Rspec
+end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

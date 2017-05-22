@@ -6,23 +6,25 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     let(:recording){ FactoryGirl.create :recording, user: user }
     let(:reference){ FactoryGirl.create :recording, user: user, data: "some new json parsed to a string" }
     
-    def json
+    def response_object
       JSON.parse(response.body)
     end
     
+    let(:params) { 
+      {
+        id: recording.id,
+        user_email: user.email,
+        user_token: token,
+        recording: {
+          description: reference.description,
+          data: reference.data
+          }
+        } 
+    }
+    
     context 'when correct token is given' do 
       
-      let(:params) { 
-        {
-          id: recording.id,
-          user_email: user.email,
-          user_token: user.reload.authentication_token,
-          recording: {
-            description: reference.description,
-            data: reference.data
-            }
-          } 
-        }
+      let(:token){ user.authentication_token }
         
       def the_action  
         patch :update, params: params, format: :json
@@ -40,8 +42,8 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
       
       it 'should respond with correct body response' do
         the_action
-        expect(json['description']).to eq reference.description
-        expect(json['data']).to eq reference.data
+        expect(response_object['description']).to eq reference.description
+        expect(response_object['data']).to eq reference.data
       end
       
       it 'returns status code 200' do
@@ -53,17 +55,7 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
       
     context 'when a wrong token is given' do
       
-      let(:params) { 
-        {
-          id: recording.id,
-          user_email: "wrong email",
-          user_token: "wrong token",
-          recording: {
-            description: reference.description,
-            data: reference.data
-            }
-          } 
-        }
+      let(:token){ "wrong token" }
         
       def the_action  
         patch :update, params: params, format: :json
@@ -71,7 +63,7 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     
       it 'should respond with correct body response' do
         the_action
-        expect(json['error']).to eq "You need to sign in or sign up before continuing."
+        expect(response_object['error']).to eq "You need to sign in or sign up before continuing."
       end
       
       it 'returns status code 401' do

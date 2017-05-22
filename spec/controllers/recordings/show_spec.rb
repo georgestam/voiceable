@@ -6,10 +6,10 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     let!(:recording){ FactoryGirl.create :recording, user: user }
       
     def the_action  
-      patch :show, params: { id: recording.id }, format: :json
+      get :show, params: { id: recording.id }, format: :json
     end
     
-    def json
+    def response_object
       JSON.parse(response.body)
     end 
     
@@ -18,8 +18,8 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     }
       
     it 'should respond with correct body response' do
-      expect(json['description']).to eq recording.description
-      expect(json['data']).to eq recording.data
+      expect(response_object.fetch('description')).to eq recording.description
+      expect(response_object.fetch('data')).to eq recording.data
     end
     
     it 'returns status code 200' do
