@@ -9,17 +9,18 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
       get :index, format: :json
     end
     
-    def json
+    def response_object
       JSON.parse(response.body)
     end 
     
     before {
       the_action
+      expect(response_object.size).to eq(1)
     }
       
     it 'should respond with correct body response' do
-      expect(json.first['description']).to eq recording.description
-      expect(json.first['data']).to eq recording.data
+      expect(response_object.first.fetch("description")).to eq recording.description
+      expect(response_object.first.fetch("data")).to eq recording.data
     end
     
     it 'returns status code 200' do
