@@ -17,7 +17,7 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
       the_action
     }
       
-    it 'should respond with correct body response' do
+    it 'responds with a corresponding object' do
       expect(response_object.fetch('description')).to eq recording.description
       expect(response_object.fetch('data')).to eq recording.data
     end

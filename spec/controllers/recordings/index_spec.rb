@@ -15,10 +15,13 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     
     before {
       the_action
-      expect(response_object.size).to eq(1)
     }
-      
-    it 'should respond with correct body response' do
+    
+    it 'returns and object' do
+      expect(response_object.size).to eq(1)
+    end
+    
+    it 'responds with a corresponding object' do
       expect(response_object.first.fetch("description")).to eq recording.description
       expect(response_object.first.fetch("data")).to eq recording.data
     end

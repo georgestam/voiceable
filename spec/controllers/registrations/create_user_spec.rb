@@ -19,15 +19,15 @@ RSpec.describe RegistrationsController, type: :controller do
           user: {
             email: reference.email,
             password: reference.password
-            } 
           } 
+        } 
       }
         
       def the_action 
         post :create, params: right_params, format: :json
       end
   
-      it 'should create a new user' do
+      it 'creates a new user' do
         expect {
           the_action
         }.to change { 
@@ -35,7 +35,7 @@ RSpec.describe RegistrationsController, type: :controller do
         }.by(1)
       end
       
-      it 'should create a token in the user table' do
+      it 'creates a token in the user table' do
         expect { 
           the_action 
         }.to change { 
@@ -43,9 +43,12 @@ RSpec.describe RegistrationsController, type: :controller do
         }.from(false).to(true)
       end
       
-      it 'should have created a token as a string' do
-        the_action
-        expect(User.first.authentication_token).to be_kind_of(String)
+      it 'generates a token as a string' do
+        expect { 
+          the_action 
+        }.to change { 
+          User.first.try(:authentication_token).class
+        }.from(NilClass).to(String)
       end
       
       it 'returns status code 201' do
@@ -70,7 +73,7 @@ RSpec.describe RegistrationsController, type: :controller do
         post :create, params: wrong_params, format: :json
       end
   
-      it 'should not create a new user' do
+      it 'does not create a new user' do
         expect { the_action }.to_not change(User, :count) # use this sintax (rather than User.count) in order top please rubocop
       end
       
