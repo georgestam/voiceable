@@ -17,7 +17,7 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
       the_action
     }
     
-    it 'returns and object' do
+    it 'returns an object' do
       expect(response_object.size).to eq(1)
     end
     

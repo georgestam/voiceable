@@ -12,9 +12,13 @@ RSpec.describe RegistrationsController, type: :controller do
       devise_mapping_for_rspec
     }
     
+    def the_action  
+      post :create, params: params, format: :json
+    end
+    
     context 'when a correct params are given' do 
       
-      let(:right_params) { 
+      let(:params) { 
         { 
           user: {
             email: reference.email,
@@ -22,10 +26,6 @@ RSpec.describe RegistrationsController, type: :controller do
           } 
         } 
       }
-        
-      def the_action 
-        post :create, params: right_params, format: :json
-      end
   
       it 'creates a new user' do
         expect {
@@ -40,13 +40,7 @@ RSpec.describe RegistrationsController, type: :controller do
           the_action 
         }.to change { 
           User.first.try(:authentication_token).present? 
-        }.from(false).to(true)
-      end
-      
-      it 'generates a token as a string' do
-        expect { 
-          the_action 
-        }.to change { 
+        }.from(false).to(true).and change {
           User.first.try(:authentication_token).class
         }.from(NilClass).to(String)
       end
@@ -60,7 +54,7 @@ RSpec.describe RegistrationsController, type: :controller do
     
     context 'when wrong params are given' do 
       
-      let(:wrong_params) { 
+      let(:params) { 
         { 
           user: {
             email: "wrong@email",
@@ -68,10 +62,6 @@ RSpec.describe RegistrationsController, type: :controller do
             } 
           } 
       }
-        
-      def the_action  
-        post :create, params: wrong_params, format: :json
-      end
   
       it 'does not create a new user' do
         expect { the_action }.to_not change(User, :count) # use this sintax (rather than User.count) in order top please rubocop
