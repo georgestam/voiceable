@@ -18,8 +18,8 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
         recording: {
           description: reference.description,
           data: reference.data
-          }
-        } 
+        }
+      } 
     }
     
     def the_action  
@@ -34,9 +34,9 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
         expect {
           the_action
         }.to change { 
-        recording.reload.description
+          recording.reload.description
         }.from(recording.description).to(reference.description).and change {
-        recording.reload.data
+          recording.reload.data
         }.from(recording.data).to(reference.data)
       end
       
