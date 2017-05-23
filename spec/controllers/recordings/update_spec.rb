@@ -22,15 +22,15 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
         } 
     }
     
+    def the_action  
+      patch :update, params: params, format: :json
+    end
+    
     context 'when correct token is given' do 
       
       let(:token){ user.authentication_token }
-        
-      def the_action  
-        patch :update, params: params, format: :json
-      end
 
-      it 'should update recording attributes' do
+      it 'updates recording attributes' do
         expect {
           the_action
         }.to change { 
@@ -40,10 +40,10 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
         }.from(recording.data).to(reference.data)
       end
       
-      it 'should respond with correct body response' do
+      it 'responds with a corresponding object' do
         the_action
-        expect(response_object['description']).to eq reference.description
-        expect(response_object['data']).to eq reference.data
+        expect(response_object.fetch('description')).to eq reference.description
+        expect(response_object.fetch('data')).to eq reference.data
       end
       
       it 'returns status code 200' do
@@ -56,14 +56,10 @@ RSpec.describe Api::Respira::V1::RecordingsController, type: :controller do
     context 'when a wrong token is given' do
       
       let(:token){ "wrong token" }
-        
-      def the_action  
-        patch :update, params: params, format: :json
-      end
     
-      it 'should respond with correct body response' do
+      it 'responds with a corresponding object' do
         the_action
-        expect(response_object['error']).to eq "You need to sign in or sign up before continuing."
+        expect(response_object.fetch('error')).to eq "You need to sign in or sign up before continuing."
       end
       
       it 'returns status code 401' do
