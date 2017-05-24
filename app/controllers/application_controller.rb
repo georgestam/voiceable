@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   
-  helper_method :public_home_page?
-  def public_home_page?
-    params[:controller].in?(%w(pages application)) && 'home'.in?([params[:id], params[:action]])
-  end
-  
   helper_method :sign_up_page?
   def sign_up_page?
     (controller_name.in? %w[registrations sessions]) && controller.action_name != 'edit'

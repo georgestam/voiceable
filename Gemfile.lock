@@ -513,7 +513,7 @@ DEPENDENCIES
   letter_opener (~> 1.4, >= 1.4.1)
   listen (~> 3.0.5)
   mail
-  momentjs-rails (~> 2.5.0)
+  momentjs-rails
   money-rails (~> 1.7)
   nprogress-rails (~> 0.2.0.2)
   okcomputer (~> 1.14)
