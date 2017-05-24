@@ -21,14 +21,14 @@
   %body
     - sign_up_page? ? @page_class = 'sign-up-or-in' : 
     - if current_page?(root_path) 
-      = render "shared/brand_header"
+      #main{:class => "#{@page_class}"}
+        = render "shared/brand_header"
+        = yield
     - else
       = render "shared/main_header"
-    #main{:class => "page-content container #{@page_class}"}
-      - unless public_home_page?
-        #all-flash-messages
-          = render "shared/flashes", flash: flash
-      = yield
+      #main{:class => "page-content container #{@page_class}"}
+        = render "shared/flashes", flash: flash
+        = yield
     .spacer
     -# = render 'shared/footer'
     -# = render 'layouts/analytics'
