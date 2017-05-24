@@ -1,6 +1,8 @@
-!!!
+!!! 5
 %html{lang: I18n.locale}
   %head
+    -# %link{rel: 'shortcut icon', href: asset_path('favicon.ico')}
+    -# = render 'shared/favicon'
     - if test?
       :javascript
         window.errors = []
@@ -9,15 +11,48 @@
           return false; // false: don't swallow exceptions.
         }
     
-    %title= yield(:title)
-    -# = render 'shared/favicon'
+    %title= yield(:title) || Platform.name
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     
   %body
-    -# = render 'shared/navbar_selector'
-    -# = render 'shared/flashes'
-    = yield
+    - if sign_up_page?
+      - @page_class = 'sign-up-or-in'
+    - unless @full_screen_layout
+      = render "shared/brand_header"
+    .container.base-container
+      - if !current_page?(root_path)
+        = render 'layouts/header'
+      #main{:class => "page-content container #{@page_class}"}
+        - unless public_home_page?
+          #all-flash-messages
+            = render "shared/flashes", flash: flash
+        = yield
+      .spacer
     -# = render 'shared/footer'
+    -# = render 'layouts/analytics'
+    
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = yield :bottom_js
+    -# :javascript
+      MOBILE = #{!!browser.device.mobile?}
+      
+    :javascript
+      UserVoice = window.UserVoice || [];
+      UserVoice.push(['showTab', 'classic_widget', {
+        mode: 'full',
+        primary_color: '#63a961',
+        link_color: '#63a961',
+        default_mode: 'support',
+        forum_id: 208850,
+        support_tab_name: 'Report issues',
+        feedback_tab_name: 'Got an idea?',
+        tab_label: 'Feedback & Support',
+        tab_color: '#63a961',
+        tab_position: 'bottom-right',
+        tab_inverted: false
+      }]);
+  
+  
+    
 

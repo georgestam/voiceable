@@ -1,1 +1,37 @@
-this a test!
+Voiceable= render 'shared/brand_header'
+- if flash && flash[:error]
+  .alert.alert-danger= flash[:error]
+.jumbotron
+  %h1 Your beautiful, free fluency techniques journal.
+  %p Voiceable is a place to share and develop your fluency techniques practice.
+  %a{:href => new_user_registration_path}
+    %button.sign-up.btn.btn-lg.btn-primary Sign up for free
+.three-panes
+  .pane.col-lg-offset-1.col-lg-3
+    %i.fa.fa-book
+    %h2
+      Start a fluency techniques journal
+    %p
+      How has fluency techniques practice changed you? Start
+      %strong sharing your practice
+      today, or create a
+      = succeed "." do
+        %strong private journal
+  .pane.col-lg-3
+    %i.fa.fa-globe
+    %h2 Explore together
+    %p You don't have to do it alone! Follow your friends and explore other peoples fluency techniques journals.
+  .pane.col-lg-3
+    %i.fa.fa-bolt
+    %h2 Deepen your practice
+    %p Get feedback, support and inspiration from others, and give your fluency techniques practice a boost.
+.copy
+  %h1 Join our online sangha!
+  %p
+    Voiceable is a community where People Who Stutter can share their fluency techniques practice online. Need tips or advice on how to meditate? Or maybe you're already a closet Zen master! We are a community made up of folks of all levels of experience, all walking the same dharma path. Whether you practice Vipassana, mindfulness, Buddhist fluency techniques or even prayer,
+    = succeed "." do
+      %a{:href => new_user_registration_path} join for free today
+  %p
+    %strong Like what you see? Tell others about it!
+  .shareaholic-canvas{"data-app" => "share_buttons", "data-app-id" => "5237488"}
+  

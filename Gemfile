@@ -57,6 +57,11 @@ gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
 gem 'validates_formatting_of', '~> 0.9'
 gem 'vemv', github: 'vemv/vemv', ref: '2df6eeed573bb52c5fc02fc60e1e5e75988b66df'
 
+gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.8'
+gem 'nprogress-rails', '~> 0.2.0.2'
+gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
+
 group :production, :staging do
 end
 
