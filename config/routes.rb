@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   root to: "pages#index"
   
+  get 'about' => "pages#about"
+  get 'contribute' => "pages#contribute"
+  get 'contact' => "pages#contact"
+  get 'questions' => "pages#questions"
+  
   namespace :api, defaults: { format: :json } do
     namespace :respira do
       namespace :v1 do

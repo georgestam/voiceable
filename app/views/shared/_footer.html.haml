@@ -1,0 +1,35 @@
+%footer
+  .container
+    .col-md-3
+      %p.header Community
+      %ul
+        %li
+          %a{:href => ""} Twitter
+        %li
+          %a{:href => ""} Facebook
+        %li
+          %a{:href => ""} Google+
+    .col-md-3
+      %p.header About
+      %ul
+        %li= link_to 'Fluency Journal', ''
+        %li= link_to 'About Voiceable', about_path
+        %li= link_to 'Q&A', questions_path
+    .col-md-3
+      %p.header Contribute
+      %ul
+        %li= link_to 'How to Contribute', '/contribute'
+        %li= link_to 'GitHub', ''
+        %li= link_to 'Contact', '/contact'
+    .copyright-holder.col-md-3
+      = image_tag('logo/main-logo.png', class: 'footer-logo')
+      %p.mobile-nav.hidden
+        %a{:href => "/about"} About
+        \-
+        %a{:href => "/questions"} Q&A
+        \-
+        %a{:href => "/contribute"} Contribute
+        \-
+        %a{:href => "/contact"} Contact
+      %p.copyright
+        © 2017-#{Time.now.year} Voiceable
