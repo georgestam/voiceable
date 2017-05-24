@@ -1,0 +1,295 @@
+@import "config/bootstrap_base";
+
+/* Front page */
+.front-page {
+  .jumbotron {
+    border-bottom: 3px solid $green;
+    background: transparent url(image_path('women_sitting.jpg')) right center no-repeat;
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+    float: left;
+    height: 400px;
+    padding: 60px 20px;
+    margin-bottom: 0;
+    .sign-up {
+      margin-top: 80px;
+      font-size: 1.3em;
+      border: 0;
+      padding: 15px 30px;
+    }
+  }
+  .three-panes {
+    float: left;
+    width: 100%;
+    border-bottom: 3px solid $green;
+    color: $dark-grey;
+    padding-top: 20px;
+    background: white;
+    padding-left: 7.5%;
+    .pane {
+      border-radius: 20px;
+      font-size: 0.7em;
+      padding: 10px 20px;
+      text-align: center;
+      h2 {
+        font-size: 24px;
+      }
+      i {
+        color: lighten($link-color, 5%);
+        font-size: 5em;
+      }
+    }
+  }
+  .copy {
+    color: whitesmoke;
+    float: left;
+    padding: 15px 3em 20px;
+    text-align: center;
+    background: $link-color;
+    border-bottom: 3px solid $green;
+    h1 {
+      margin: 10px 0 20px;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+  .padder {
+    float: left;
+    width: 100%;
+    padding: 10px 0 0 10px;
+  }
+}
+
+/* Sign in/up */
+.sign-in,
+.sign-up-box {
+  .well {
+    background: white;
+    float: none;
+    clear: both;
+    margin: 15px auto 0 auto;
+    overflow: hidden;
+  }
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    margin-top: 10px;
+    border-radius: 10px;
+    line-height: 26px;
+    font-size: 20px;
+    height: 52px;
+  }
+  label {
+    margin-bottom: 10px;
+  }
+  .devise-options {
+    float: left;
+    margin-top: 10px;
+    opacity: 0.9;
+  }
+}
+
+/* Sign up */
+.sign-up-box {
+  .alert { width: inherit; }
+  .well {
+    margin: 25px auto 25px auto;
+  }
+  h1 {
+    text-align: center;
+    line-height: 1.5em;
+    margin: 10px 0 1em 0;
+    font-size: 1.5em;
+  }
+  .its-free {
+    text-align: center;
+    color: $pink;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  .left {
+    .cta {
+      width: 100%;
+    }
+    .sign_in_link {
+      margin-top: 0.5em;
+      float: left;
+      color: $dark-grey;
+      font-size: 0.8em;
+    }
+  }
+  .our-community {
+    float: left;
+    width: 100%;
+    margin-top: 1.5em;
+    h2 {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    .user-snippet {
+      float: left;
+      text-align: center;
+      width: 16.6%;
+      height: 150px;
+      img {
+        margin: 0 auto;
+      }
+      .details {
+        clear: both;
+        margin-top: 1em;
+        font-size: 0.7em;
+        color: $dark-grey;
+      }
+    }
+  }
+  .total_hours {
+    text-align: center;
+  }
+}
+
+/* Remove page-content padding for sign up / in pages */
+.sign-up-or-in {
+  padding-top: 0;
+}
+
+/* Sign in */
+.sign-in {
+  .well {
+    padding: 20px 40px 40px 40px;
+    .user_email {
+      margin-bottom: 5px;
+    }
+    .devise-options {
+      margin-left: 15px;
+    }
+  }
+}
+
+/* For static pages; About, Contact etc */
+.page {
+  padding: 2em 4em !important;
+  p, ul li {
+    line-height: 1.6;
+    margin: 0.6em 0;
+    color: #555;
+  }
+  h1, h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .lead {
+    font-size: 1.3em;
+    margin: 1em 0;
+  }
+  h2 {
+    margin-top: 1em;
+  }
+  .principles {
+    margin: 1em 0;
+    .pane {
+      text-align: center;
+      border-right: 3px solid $green;
+      p {
+        line-height: 1.4;
+        font-size: 100%;
+      }
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+  blockquote {
+    font-family: Georgia, serif;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+}
+
+/* Contribute */
+.contribute {
+  .fa-github {
+    float: right;
+    color: $dark-grey;
+    font-size: 20em;
+    margin: 0 0 30px 85px;
+  }
+}
+
+/* Contact */
+.contact {
+  img {
+    float: right;
+  }
+  .email {
+    text-align: center;
+    color: $link-color;
+    font-size: 1.8em;
+    margin: 1em 0 1.5em;
+  }
+}
+
+/* About */
+.about {
+  .logomark {
+    float: right;
+    width: 400px;
+    margin: 0 1em 1em 1em;
+  }
+  .opendude {
+    float: right;
+    margin: 0 2em 2em 2em;
+  }
+  .fa-globe {
+    font-size: 10em;
+    float: right;
+    margin: 40px;
+    color: $link-color;
+  }
+}
+
+/* Explore comments */
+.comment-teaser {
+  float: left;
+  width: 100%;
+  margin: 1em 0;
+  .comment-meta {
+    float: left;
+    width: 100%;
+    .avatar {
+      float: left;
+      width: 65px;
+      img {
+        border-radius: 50%;
+      }
+    }
+    .text {
+      float: left;
+      .time-ago {
+        float: left;
+        font-size: 0.8em;
+        color: #ccc;
+      }
+      .summary {
+        float: left;
+        clear: left;
+        font-size: 0.8em;
+        opacity: 0.8;
+      }
+    }
+  }
+  .body {
+    margin-left: 65px;
+    padding: 1em;
+    border-left: 2px solid $green;
+    float: left;
+    background: white;
+  }
+}
