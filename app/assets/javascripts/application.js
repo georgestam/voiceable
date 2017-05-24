@@ -13,16 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require moment
 //= require turbolinks
 //= require_tree .
-
-//= require chosen-jquery
-//= require bootstrap-datetimepicker
-//= require nprogress
-//= require nprogress-turbolinks
 
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
 //= require bootstrap/popover
 //= require bootstrap/modal
 //= require bootstrap/collapse
+
+//= require chosen-jquery
+//= require nprogress
+//= require nprogress-turbolinks
+//= require bootstrap-datetimepicker

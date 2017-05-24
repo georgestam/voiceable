@@ -61,6 +61,7 @@ gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.8'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
 gem 'nprogress-rails', '~> 0.2.0.2'
+gem 'momentjs-rails'
 
 group :production, :staging do
 end
