@@ -15,20 +15,21 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:400,700,400italic", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
+    
   %body
-    - if sign_up_page?
-      - @page_class = 'sign-up-or-in'
-    - unless @full_screen_layout
+    - sign_up_page? ? @page_class = 'sign-up-or-in' : 
+    - if current_page?(root_path) 
       = render "shared/brand_header"
-    .container.base-container
-      - if !current_page?(root_path)
-        = render 'layouts/header'
-      #main{:class => "page-content container #{@page_class}"}
-        - unless public_home_page?
-          #all-flash-messages
-            = render "shared/flashes", flash: flash
-        = yield
-      .spacer
+    - else
+      = render "shared/main_header"
+    #main{:class => "page-content container #{@page_class}"}
+      - unless public_home_page?
+        #all-flash-messages
+          = render "shared/flashes", flash: flash
+      = yield
+    .spacer
     -# = render 'shared/footer'
     -# = render 'layouts/analytics'
     
