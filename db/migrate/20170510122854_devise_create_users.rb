@@ -47,6 +47,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.text :practice
       t.boolean :public_diary
       t.integer :default_contacts
+      t.string :username
     end
 
     add_index :users, :email,                unique: true

@@ -19,15 +19,20 @@
     %link{:href => "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
     
   %body
-    - sign_up_page? ? @page_class = 'sign-up-or-in' : 
     - if current_page?(root_path) 
-      #main{:class => "#{@page_class}"}
-        = render "shared/brand_header"
+      = render "shared/brand_header"
+      #div{:class => "#{@page_class}"}
         = yield
-    - else
-      = render "shared/main_header"
-      #main{:class => "page-content container #{@page_class}"}
-        = render "shared/flashes", flash: flash
+    - elsif sign_up_page?
+      - @page_class = 'sign-up-or-in'
+      = render "shared/brand_header"
+      = render "shared/flashes", flash: flash
+      #div{:class => "page-content container #{@page_class}"}
+        = yield
+    - else 
+      -# = render "shared/main_header"
+      = render "shared/flashes", flash: flash
+      #div{:class => "page-content container #{@page_class}"}
         = yield
     .spacer
     = render 'shared/footer'

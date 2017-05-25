@@ -1,18 +1,72 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-    = f.input :password_confirmation, required: false
-    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-  .form-actions
-    = f.button :submit, "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+%h1 My Profile
+%hr/
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => :true, :method => :put , :class => 'form-horizontal'}) do |f|
+  = devise_error_messages!
+  .form-group
+    %label.col-lg-2.control-label{:for => "user_avatar"} Profile picture
+    .col-lg-10
+      .form-group.string.optional.user_first_name
+        .col-lg-12
+          = large_avatar_of(@user)
+          = f.file_field :avatar
+          %p.help-block
+            To change your picture, select a new picture through
+            = succeed "," do
+              %em Choose File
+  .update-details
+    = f.submit "Update", :class => 'btn btn-lg btn-primary'
+  %h1 The Basics
+  %hr/
+  = form_element(f, :first_name, 'user', "First Name", 3, { label: false })
+  = form_element(f, :last_name, 'user', "Last Name", 3, { label: false })
+  = form_element(f, :dob, 'user', "Date of Birth", 3, { as: 'date', label: false, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true, input_html: { :class => 'col-lg-1' }} )
+  = form_element(f, :gender, 'user', "Gender", 3, { collection: [['Male', 0], ['Female', 1], ['Other', 2]], as: :radio_buttons, item_wrapper_class: 'inline', label: false })
+  = form_element(f, :city, 'user', "City", 3, { label: false })
+  = form_element(f, :country, 'user', "Country", 3, { label: false })
+  = form_element(f, :website, 'user', "Website", 3, { label: false })
+  .update-details
+    = f.submit "Update", :class => 'btn btn-lg btn-primary'
+  .contemplative-profile
+    %h1 Contemplative profile
+    %hr/
+    = form_element(f, :who, 'user', "Who are you?", 8, { input_html: { rows: 3 }, hint: 'Tell us a little about yourself in one paragraph.', label: false })
+    = form_element(f, :style, 'user', "Meditation style", 3, { hint: 'Zen, TM, Vipassana etc.', label: false })
+    = form_element(f, :why, 'user', "Why do you practice?", 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint: 'What inspires you to meditate?', label: false })
+    = form_element(f, :practice, 'user', "What do you practice?", 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint: 'What\'s your routine in an average sit?', label: false })
+    = form_element(f, :default_sit_length, 'user', "Default sit length", 1, { label: false })
+  .update-details
+    = f.submit "Update", :class => 'btn btn-lg btn-primary'
+.row.account-misc
+  .col-md-4
+    %h1 Export
+    %p Download all my sits in:
+    %ul
+      %li= link_to "XML format", "/u/#{current_user.username}/export.xml"
+      %li= link_to "JSON format", "/u/#{current_user.username}/export.json"
+  .col-md-4
+    %h1 Account
+    %p Warning: danger zone.
+    %ul
+      %li
+        %a{:href => "#"} Change my email address
+      %li
+        Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+  .col-md-4.privacy-setting
+    %h1 Privacy
+    %p
+      Your journal is #{@user.private_stream ? 'private' : 'public'}.
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :class => 'form-horizontal'}) do |f|
+      - if @user.private_stream
+        = f.submit "Make it public", :class => 'btn btn-default'
+        %p.warning
+          This will make
+          %em all
+          of your journal public! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
+        = f.input :private_stream, :as => :hidden, :input_html => { :value => "false" }
+      - else
+        = f.submit "Make it private", :class => 'btn btn-default'
+        %p.warning
+          This will make your journal private, meaning only you can see it. You can change this back to public at any time, but when you do
+          %em all
+          of your content will be marked as public.
+        = f.input :private_stream, :as => :hidden, :input_html => { :value => "true" }
