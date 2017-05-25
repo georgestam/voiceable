@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
+  
   
   scope '(:locale)', locale: /en|es/ do
+    
+    devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
 
     root to: "pages#index"
     
