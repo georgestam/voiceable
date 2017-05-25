@@ -1,23 +1,7 @@
 !!! 5
 %html{lang: I18n.locale}
-  %head
-    -# %link{rel: 'shortcut icon', href: asset_path('favicon.ico')}
-    -# = render 'shared/favicon'
-    - if test?
-      :javascript
-        window.errors = []
-        window.onerror = function(a, b, c){
-          window.errors.push([a, b, c]);
-          return false; // false: don't swallow exceptions.
-        }
-    
-    %title= yield(:title) || Platform.name
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    
-    %link{:href => "http://fonts.googleapis.com/css?family=Lato:400,700,400italic", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
-    
+  %head  
+    = render 'layouts/head'
   %body
     - if current_page?(root_path) 
       = render "shared/brand_header"
@@ -42,22 +26,7 @@
     = yield :bottom_js
     -# :javascript
       MOBILE = #{!!browser.device.mobile?}
-      
-    :javascript
-      UserVoice = window.UserVoice || [];
-      UserVoice.push(['showTab', 'classic_widget', {
-        mode: 'full',
-        primary_color: '#63a961',
-        link_color: '#63a961',
-        default_mode: 'support',
-        forum_id: 208850,
-        support_tab_name: 'Report issues',
-        feedback_tab_name: 'Got an idea?',
-        tab_label: 'Feedback & Support',
-        tab_color: '#63a961',
-        tab_position: 'bottom-right',
-        tab_inverted: false
-      }]);
+
   
   
     
