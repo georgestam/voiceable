@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   
-  helper_method :sign_up_page?
-  def sign_up_page?
-    (controller_name.in? %w[registrations sessions]) && action_name != 'edit'
-  end 
-  
   private
   
   def set_locale #  i18n
