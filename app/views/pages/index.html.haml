@@ -1,33 +1,37 @@
 .jumbotron
-  %h1 Your beautiful, free fluency techniques journal.
-  %p Voiceable is a place to share and develop your fluency techniques practice.
+  %h1 
+    = t('.main_liner')
+  %p 
+    = t('.sub_liner') 
   %a{:href => new_user_registration_path}
-    %button.sign-up.btn.btn-lg.btn-primary Sign up for free
+    %button.sign-up.btn.btn-lg.btn-primary 
+      = t('.sign_up')
 .three-panes
   .pane.col-lg-offset-1.col-lg-3
     %i.fa.fa-book
     %h2
-      Start a fluency techniques journal
-    %p
-      How has fluency techniques practice changed you? Start
-      %strong sharing your practice
-      today, or create a
-      = succeed "." do
-        %strong private journal
+      = t('.step_one') 
+    %p 
+      = t('.step_one_description') 
   .pane.col-lg-3
     %i.fa.fa-globe
-    %h2 Explore together
-    %p You don't have to do it alone! Follow your friends and explore other peoples fluency techniques journals.
+    %h2 
+      = t('.step_two') 
+    %p 
+      = t('.step_two_description') 
   .pane.col-lg-3
     %i.fa.fa-bolt
-    %h2 Deepen your practice
-    %p Get feedback, support and inspiration from others, and give your fluency techniques practice a boost.
+    %h2 
+      = t('.step_three')
+    %p 
+      = t('.step_three_description') 
 .copy
-  %h1 Join our online community of PWS!
+  %h1 
+    = t('.join_us') 
   %p
-    Voiceable is a community where People Who Stutter can share their fluency techniques practice online. Need tips or advice on how on how to speak better? Or maybe you're already a public speaker! We are a community made up of folks of all levels of experience, all walking the same freedom to speech. Whether you practice started now or 50 years ago,
-    = succeed "." do
-      %a{:href => new_user_registration_path} join for free today
+    = t('.join_us_description') 
+    = link_to t('.join_for_free_today'), new_user_registration_path
   %p
-    %strong Like what you see? Tell others about it!
+    %strong 
+      = t('.like_what_you_see') 
   

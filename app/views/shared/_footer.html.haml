@@ -1,7 +1,8 @@
 %footer
   .container
     .col-md-3
-      %p.header Community
+      %p.header 
+        = t('.community')
       %ul
         %li
           %a{:href => ""} Twitter
@@ -10,26 +11,32 @@
         %li
           %a{:href => ""} Google+
     .col-md-3
-      %p.header About
+      %p.header 
+        = t('.why') 
       %ul
-        %li= link_to 'Fluency Journal', ''
-        %li= link_to 'About Voiceable', about_path
-        %li= link_to 'Q&A', questions_path
+        %li= link_to t('.fluency_journal'), ''
+        %li= link_to t('.about_voiceable'), about_path
+        %li= link_to t('.questions_and_answers'), questions_path
     .col-md-3
-      %p.header Contribute
+      %p.header 
+        = t('.contribute') 
       %ul
-        %li= link_to 'How to Contribute', '/contribute'
+        %li= link_to t('.how_to_contribute'), '/contribute'
         %li= link_to 'GitHub', ''
-        %li= link_to 'Contact', '/contact'
+        %li= link_to t('.contact'), '/contact'
     .copyright-holder.col-md-3
       = image_tag('logo/main-logo.png', class: 'footer-logo')
       %p.mobile-nav.hidden
-        %a{:href => "/about"} About
+        %a{:href => "/about"} 
+          = t('.about_voiceable')
         \-
-        %a{:href => "/questions"} Q&A
+        %a{:href => "/questions"}
+          = t('.questions_and_answers')
         \-
-        %a{:href => "/contribute"} Contribute
+        %a{:href => "/contribute"} 
+          = t('.how_to_contribute')
         \-
-        %a{:href => "/contact"} Contact
+        %a{:href => "/contact"} 
+          = t('.contact')
       %p.copyright
         © #{Time.now.year} Voiceable

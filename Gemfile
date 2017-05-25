@@ -8,10 +8,7 @@ gem 'pg', '~> 0.18'
 
 gem 'puma'
 
-# specific for the theme
-gem 'fontello_rails_converter', '~> 0.4.6'
-
-# Useful gems
+gem 'i18n-tasks', '~> 0.9.15'
 gem 'activerecord-session_store', '~> 1'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'browser', '~> 2.3'

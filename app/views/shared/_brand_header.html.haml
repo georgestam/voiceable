@@ -1,7 +1,9 @@
 .brand-header
   %a{:href => "/"}
     = image_tag 'logo/main-logo.png', class: 'main-logo'
-    %p.voiceable Voiceable
+    %p.voiceable 
+      = Platform.name
   .already-signed-up
-    Already signed up?
-    %a.btn.btn-default{:href => new_user_session_path} Login
+    = t('.already_signed') 
+    %a.btn.btn-default{:href => new_user_session_path} 
+      = t('.login') 
