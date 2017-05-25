@@ -1,0 +1,14 @@
+- if true #!@user.following_anyone?
+  = render 'shared/user_summary'
+  .col-lg-9
+    .message-box.no-follow
+      %h2 You're not following anyone yet.
+      %a{:href => "/explore"} Go forth and explore!
+      %p When you start following people their updates will appear here.
+- else
+  .sit-container
+    = render 'shared/user_summary'
+    - @feed_items.each do |sit|
+      = render :partial => 'shared/sit_teaser_block', :locals => { :sit => sit, :width => '3' }
+  .pagination-container
+    = will_paginate @feed_items, renderer: BootstrapPagination::Rails

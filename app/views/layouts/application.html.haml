@@ -8,7 +8,7 @@
       #div{:class => "#{@page_class}"}
         = yield
     - else 
-      -# = render "shared/main_header"
+      = render "shared/main_header"
       = render "shared/flashes", flash: flash
       #div{:class => "page-content container #{@page_class}"}
         = yield

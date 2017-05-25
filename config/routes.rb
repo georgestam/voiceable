@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, controllers: { registrations: 'registrations', registrations: 'registrations', sessions: 'sessions' }
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
 
   root to: "pages#index"
   
-  get 'about' => "pages#about"
-  get 'contribute' => "pages#contribute"
-  get 'contact' => "pages#contact"
-  get 'questions' => "pages#questions"
+  get 'about', to: "pages#about"
+  get 'contribute', to: "pages#contribute"
+  get 'contact', to: "pages#contact"
+  get 'questions', to: "pages#questions"
+  
+  scope '/dashboard' do
+    root to: "users#main", as: :dashboard
+    get "welcome", to: "users#welcome", as: :welcome
+  end
   
   namespace :api, defaults: { format: :json } do
     namespace :respira do
