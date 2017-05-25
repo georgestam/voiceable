@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :sign_up_page?
   def sign_up_page?
-    (controller_name.in? %w[registrations sessions]) && controller.action_name != 'edit'
+    (controller_name.in? %w[registrations sessions]) && action_name != 'edit'
   end 
   
   private
