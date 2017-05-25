@@ -55,7 +55,6 @@ gem 'uglifier', '~> 3'
 gem 'unicorn', '~> 5.2'
 gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
 gem 'validates_formatting_of', '~> 0.9'
-gem 'vemv', github: 'vemv/vemv', ref: '2df6eeed573bb52c5fc02fc60e1e5e75988b66df'
 
 gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.8'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
