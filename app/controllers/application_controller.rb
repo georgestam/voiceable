@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
   
-  before_action :set_locale
+  around_action :set_locale
   
   include Pundit
   
@@ -13,12 +13,25 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def set_locale #  i18n
-    I18n.locale = I18n.default_locale
-  end
-  
   def skip_pundit? #  Pundit
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+  
+  def set_locale #  i18n
+    I18n.locale = params[:locale] || current_user.try(:locale) || extract_locale_from_accept_language_header || I18n.default_locale
+    yield
+    I18n.locale = I18n.default_locale
+  end
+
+  def default_url_options
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
+  
+  private
+  
+  def extract_locale_from_accept_language_header
+    language = request.env['HTTP_ACCEPT_LANGUAGE'].presence
+    language ? HttpAcceptLangParser.parse(language) : nil
   end
   
 end
