@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   acts_as_token_authenticatable
   
+  LANGUAGES = %w[ar en].freeze
+  
   has_many :recordings, dependent: :destroy
 
   # Include default devise modules. Others available are:
