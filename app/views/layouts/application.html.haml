@@ -3,7 +3,7 @@
   %head  
     = render 'layouts/head'
   %body
-    - if current_page?(root_path) 
+    - if homepage? 
       = render "shared/brand_header"
       #div{:class => "#{@page_class}"}
         = yield
