@@ -48,8 +48,11 @@ ActiveRecord::Schema.define(version: 20170512110836) do
     t.text     "who"
     t.text     "when"
     t.text     "practice"
+    t.text     "style"
     t.boolean  "public_diary"
     t.integer  "default_contacts"
+    t.string   "username"
+    t.string   "avatar"
     t.boolean  "admin",                             default: false, null: false
     t.string   "authentication_token",   limit: 30
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

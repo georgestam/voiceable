@@ -45,9 +45,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.text :who
       t.text :when
       t.text :practice
+      t.text :style
       t.boolean :public_diary
       t.integer :default_contacts
       t.string :username
+      t.string :avatar
     end
 
     add_index :users, :email,                unique: true

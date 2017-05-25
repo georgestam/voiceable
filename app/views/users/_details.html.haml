@@ -1,0 +1,50 @@
+.user-details
+  -# - if @user.streak > 1
+    .location.info-block
+      .icon
+        %i.fa.fa-bolt
+      .value{:title => "#{@user == current_user ? 'You have' : "#{@user.display_name} has"} sat for #{@user.streak} days in a row!"}
+        %strong
+          = @user.streak
+          day streak!
+  .info-block
+    .icon
+      %i.fa.fa-group
+    .value
+      -# %a{:href => "#{following_user_path(@user)}"}
+        = @user.followed_users.count
+        following
+      \-
+      -# %a{:href => "#{followers_user_path(@user)}"}
+        = @user.followers.count
+        followers
+  -# - if @user.sits.count > 0
+    .info-block
+      .icon
+        %i.fa.fa-book
+      .value
+        Recorded #{@user.sits_count} journal entries
+  -# - if @user.total_hours_sat > 0
+    .info-block
+      .icon
+        %i.fa.fa-dashboard
+      .value
+        Logged #{@user.total_hours_sat} hours practice
+  - if request.path != '/main'
+    - if !@user.style.blank?
+      .info-block
+        .icon
+          %i.fa.fa-bars
+        .value
+          = @user.style
+    .info-block
+      .icon
+        %i.fa.fa-calendar
+      .value
+        Joined #{time_ago_in_words(@user.created_at)} ago
+    -# - if !@user.website.blank?
+    -#   .user-website.info-block
+    -#     .icon
+    -#       %i.fa.fa-home
+    -#     .value{:itemprop => "sameAs"}
+    -#       = website(@user)

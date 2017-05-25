@@ -4,4 +4,8 @@ class UserPolicy < ApplicationPolicy
       scope
     end
   end
+  
+  def main?
+    record == user
+  end 
 end
