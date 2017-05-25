@@ -1,23 +1,39 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  hello: "Hello world"
+  hello: Hello world
+  pages:
+    index:
+      join_for_free_today: Join for free today!
+      join_us: Join our online community of PWS!
+      join_us_description: Voiceable is a community where People Who Stutter can share
+        their fluency techniques practice online. Need tips or advice on how on how
+        to speak better? Or maybe you're already a public speaker! We are a community
+        made up of folks of all levels of experience, all walking the same freedom
+        to speech. Whether you practice started now or 50 years ago.
+      like_what_you_see: Like what you see? Tell others about it!
+      main_liner: Your beautiful, free fluency techniques journal.
+      sign_up: Sign up for free
+      step_one: Start a fluency techniques journal
+      step_one_description: How has fluency techniques practice changed you? Start
+        sharing your practice today, or create a private journal
+      step_three: Deepen your practice
+      step_three_description: Get feedback, support and inspiration from others, and
+        give your fluency techniques practice a boost.
+      step_two: Explore together
+      step_two_description: You don't have to do it alone! Follow your friends and
+        explore other peoples fluency techniques journals.
+      sub_liner: Voiceable is a place to share and develop your fluency techniques
+        practice.
+  shared:
+    brand_header:
+      already_signed: Already signed up? 
+      login: Login
+    footer:
+      about_voiceable: About
+      community: Community
+      contact: Contact
+      contribute: Contribute
+      fluency_journal: Fluency journal
+      how_to_contribute: How to contribute
+      questions_and_answers: Questions and answers
+      why: Why

@@ -1,0 +1,31 @@
+---
+es:
+  hello: Hello world
+  pages:
+    index:
+      join_for_free_today: Join for free today
+      join_us: Join us
+      join_us_description: Join us description
+      like_what_you_see: Like what you see
+      main_liner: Main liner
+      sign_up: Sign up
+      step_one: Step one
+      step_one_description: Step one description
+      step_three: Step three
+      step_three_description: Step three description
+      step_two: Step two
+      step_two_description: Step two description
+      sub_liner: Sub liner
+  shared:
+    brand_header:
+      already_signed: Already signed
+      login: Login
+    footer:
+      about_voiceable: About voiceable
+      community: Community
+      contact: Contact
+      contribute: Contribute
+      fluency_journal: Fluency journal
+      how_to_contribute: How to contribute
+      questions_and_answers: Questions and answers
+      why: Why
