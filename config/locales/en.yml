@@ -1,11 +1,20 @@
 ---
 en:
   devise:
+    registrations:
+      new:
+        already_signed_up: Already signed up?
+        time_signed_in: Time to sign in!
+        welcome: Welcome! Get your beautiful, free fluency techniques journal today.
+        you_are_part: And become part of our awesome global community!
     sessions:
       new:
         welcome: Welcome back!
         you_are_part: You are part of our awesome global community!
-  hello: Hello world
+    sign_in: Sign in
+    sign_up: Sign up
+    your_email: Your email
+    your_password: Your password
   pages:
     index:
       join_for_free_today: Join for free today!

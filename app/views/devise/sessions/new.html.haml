@@ -18,7 +18,7 @@
           = f.input :email, placeholder: 'email', label: false, autofocus: true
           = f.input :password, placeholder: 'password', label: false, autofocus: true
           = f.input :remember_me, as: :boolean, :label => false, :inline_label => true if devise_mapping.rememberable?
-          = f.submit "Sign in", :class => 'btn btn-primary btn-lg cta pull-left'
+          = f.button :submit, I18n.t('devise.sign_in'), :class => 'btn btn-primary btn-lg cta pull-left'
           %div{style: "padding-top:60px" }
             = render "devise/shared/links"
     .row.col-md-12

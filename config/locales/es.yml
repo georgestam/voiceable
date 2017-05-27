@@ -1,11 +1,20 @@
 ---
 es:
   devise:
+    registrations:
+      new:
+        already_signed_up: Already signed up?
+        time_signed_in: Time signed in
+        welcome: Welcome
+        you_are_part: You are part
     sessions:
       new:
         welcome: Welcome
         you_are_part: You are part
-  hello: Hello world
+    sign_in: Sign in
+    sign_up: Sign up
+    your_email: Your email
+    your_password: Your password
   pages:
     index:
       join_for_free_today: Join for free today
