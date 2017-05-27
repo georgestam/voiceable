@@ -1,5 +1,10 @@
 ---
 es:
+  devise:
+    sessions:
+      new:
+        welcome: Welcome
+        you_are_part: You are part
   hello: Hello world
   pages:
     index:

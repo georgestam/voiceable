@@ -1,5 +1,10 @@
 ---
 en:
+  devise:
+    sessions:
+      new:
+        welcome: Welcome back!
+        you_are_part: You are part of our awesome global community!
   hello: Hello world
   pages:
     index:
@@ -26,7 +31,7 @@ en:
         practice.
   shared:
     brand_header:
-      already_signed: Already signed up? 
+      already_signed: Already signed up?
       login: Login
     footer:
       about_voiceable: About

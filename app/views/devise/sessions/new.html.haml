@@ -1,10 +1,11 @@
 .section.sign-up-box
   .well.col-sm-8
     .row
-      .brand-header
+      #login.brand-header
         = image_tag 'logo/main-logo.png', class: 'main-logo'
         %p.voiceable Voiceable
-    %h1 Welcome back!
+    %h1 
+      = t('.welcome')
     .row
       .left.col-md-offset-3.col-md-6
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -14,15 +15,16 @@
                 = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 
           -# = f.input :username, placeholder: 'Choose a username', label: false, input_html: { autocomplete: 'off' }
-          = f.input :email, placeholder: 'Your email', label: false, autofocus: true
-          = f.input :password, placeholder: 'Password', label: false, autofocus: true
+          = f.input :email, placeholder: 'email', label: false, autofocus: true
+          = f.input :password, placeholder: 'password', label: false, autofocus: true
           = f.input :remember_me, as: :boolean, :label => false, :inline_label => true if devise_mapping.rememberable?
           = f.submit "Sign in", :class => 'btn btn-primary btn-lg cta pull-left'
           %div{style: "padding-top:60px" }
             = render "devise/shared/links"
     .row.col-md-12
       .our-community
-        %h2 You are part of our awesome global community!
+        %h2 
+          = t('.you_are_part')
         -# - @users.each do |u|
         -#   .user-snippet
         -#     = sign_up_avatar(u)

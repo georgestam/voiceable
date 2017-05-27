@@ -3,4 +3,5 @@ class SessionsController < Devise::SessionsController
     @title = 'Sign in'
     super
   end
+
 end
