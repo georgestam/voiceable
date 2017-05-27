@@ -19,6 +19,17 @@ module Api
             render_error
           end
         end
+        
+        def create
+          @recording = Recording.new(recording_params)
+          @recording.user = current_user
+          authorize @recording
+          if @recording.save
+            render :show, status: :created
+          else
+            render_error
+          end
+        end
 
         private
 
