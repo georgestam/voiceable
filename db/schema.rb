@@ -46,23 +46,6 @@ ActiveRecord::Schema.define(version: 20170526181120) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
-    t.datetime "last_login"
-    t.string   "profile_pic"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "dob"
-    t.integer  "gender"
-    t.string   "city"
-    t.string   "country"
-    t.text     "who"
-    t.text     "why"
-    t.text     "when"
-    t.boolean  "public_diary"
-    t.integer  "default_contacts"
-    t.string   "username"
-    t.string   "avatar"
-    t.string   "website"
-    t.boolean  "private_stream",                    default: false
     t.boolean  "admin",                             default: false, null: false
     t.string   "authentication_token",   limit: 30
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

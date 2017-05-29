@@ -31,27 +31,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
 
       t.timestamps null: false
-      
-      # new fields for Voiceable
-  
-      t.timestamp :last_login
-      t.string :profile_pic
-      t.string :username
-      t.string :first_name
-      t.string :last_name
-      t.date :dob
-      t.integer :gender
-      t.string :city
-      t.string :country
-      t.text :who
-      t.text :why
-      t.text :when
-      t.boolean :public_diary
-      t.integer :default_contacts
-      t.string :username
-      t.string :avatar
-      t.string :website
-      t.boolean :private_stream, default: false
+
       
     end
 
