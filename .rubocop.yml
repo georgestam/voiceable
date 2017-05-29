@@ -1,8 +1,9 @@
 AllCops:
   TargetRubyVersion: 2.4
   Exclude:
-    - "db/schema.rb"
-    - "app/lib/youtube.rb"
+    - db/schema.rb
+    - app/lib/spec_helper.rb
+    - app/helpers/application_helper.rb
   UseCache: false
 Rails:
   Enabled: true

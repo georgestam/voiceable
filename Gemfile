@@ -8,7 +8,6 @@ gem 'pg', '~> 0.18'
 
 gem 'puma'
 
-gem 'i18n-tasks', '~> 0.9.15'
 gem 'activerecord-session_store', '~> 1'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'browser', '~> 2.3'
@@ -25,6 +24,7 @@ gem 'friendly_id', '~> 5.1'
 gem 'gibbon', '~> 3.0', '>= 3.0.1'
 gem 'haml-rails', '~> 0.9'
 gem 'high_voltage', '~> 3'
+gem 'i18n-tasks', '~> 0.9.15'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.2'
 gem 'jquery-ui-rails', '~> 5'
@@ -57,8 +57,8 @@ gem 'validates_formatting_of', '~> 0.9'
 gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.8'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
-gem 'nprogress-rails', '~> 0.2.0.2'
 gem 'momentjs-rails'
+gem 'nprogress-rails', '~> 0.2.0.2'
 
 group :production, :staging do
 end

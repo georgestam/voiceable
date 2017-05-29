@@ -16,7 +16,7 @@ module ApplicationHelper
     other = f.input field, options
     form << other
     form << '</div></div>'
-    return form.html_safe
+    form.html_safe
   end
   
 end

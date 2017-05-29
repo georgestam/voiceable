@@ -17,8 +17,8 @@ class User < ApplicationRecord
   end
 
   def latest_sit(current_user)
-      # return sits.newest_first.limit(1) if self == current_user
-      # return sits.communal.newest_first.limit(1)
+    # return sits.newest_first.limit(1) if self == current_user
+    # return sits.communal.newest_first.limit(1)
   end
   
   # Overwrite Devise function to allow profile update without password requirement
@@ -30,8 +30,6 @@ class User < ApplicationRecord
     end
     update_attributes(params)
   end
-  
-  private
   
 end
 

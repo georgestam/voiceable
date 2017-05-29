@@ -77,7 +77,7 @@ module Voiceable
 
     config.to_prepare do
       Devise::SessionsController.layout "minimal"
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "minimal" }
+      Devise::RegistrationsController.layout (proc{ |controller| user_signed_in? ? "application" : "minimal" })
     end
     
     # Settings in config/environments/* take precedence over those specified here.

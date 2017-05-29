@@ -13,8 +13,6 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  private
-  
   def skip_pundit? #  Pundit
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
@@ -30,8 +28,8 @@ class ApplicationController < ActionController::Base
   end
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
-    devise_parameter_sanitizer.permit(:account_update, keys: ['first_name', 'last_name', 'avatar', 'dob(3i)', 'dob(2i)', 'dob(1i)', 'gender', 'city', 'country', 'website', 'who', 'why', 'private_stream'])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email password password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name avatar dob(3i) dob(2i) dob(1i) gender city country website who why private_stream])
   end
   
   private
