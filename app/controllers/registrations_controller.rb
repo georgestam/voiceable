@@ -1,20 +1,20 @@
 class RegistrationsController < Devise::RegistrationsController
   respond_to :json, only: [:create]
   
-  def after_sign_up_path_for(resource)
-    # '/welcome'
-  end
-
-  def after_sign_in_path_for(resource)
-    (session[:"user.return_to"].nil?) ? "/" : session[:"user.return_to"].to_s
-  end
+  # def after_sign_up_path_for(resource)
+  #   '/welcome'
+  # end
+  # 
+  # def after_sign_in_path_for(resource)
+  #   (session[:"user.return_to"].nil?) ? "/" : session[:"user.return_to"].to_s
+  # end
 
   def edit
     @page_class = 'edit-profile'
   end
 
   def update
-    flash[:notice] = 'Your profile has been updated.'
+    # flash[:notice] = 'Your profile has been updated.'
     super
   end
 

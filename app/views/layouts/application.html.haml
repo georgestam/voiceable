@@ -9,7 +9,7 @@
         = yield
     - else 
       = render "shared/main_header"
-      = render "shared/flashes", flash: flash
+      = render "shared/flashes"
       #div{:class => "page-content container #{@page_class}"}
         = yield
     .spacer
