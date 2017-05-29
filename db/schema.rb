@@ -55,13 +55,14 @@ ActiveRecord::Schema.define(version: 20170526181120) do
     t.string   "city"
     t.string   "country"
     t.text     "who"
+    t.text     "why"
     t.text     "when"
-    t.text     "practice"
-    t.text     "style"
     t.boolean  "public_diary"
     t.integer  "default_contacts"
     t.string   "username"
     t.string   "avatar"
+    t.string   "website"
+    t.boolean  "private_stream",                    default: false
     t.boolean  "admin",                             default: false, null: false
     t.string   "authentication_token",   limit: 30
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

@@ -1,7 +1,32 @@
 ---
 en:
   devise:
+    choose_a_username: Choose a username
     registrations:
+      edit:
+        account: Account
+        city: City
+        country: Country
+        date_of_bird: Date of bird
+        email: Email
+        first_name: First name
+        gender: Gender
+        iceberg_profile: Iceberg profile
+        last_name: Last name
+        make_it_private: Make it private
+        make_it_private_description: This will make your journal private, meaning only you can see it. You can change this back to public at any time, but when you do all of your content will be marked as public.
+        make_it_public: Make it public
+        make_it_public_description: This will make all of your journal public! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
+        my_profile: My profile
+        profile_picture: Profile picture
+        the_basics: The basics
+        username: Username
+        website: Website
+        what_inspire_to_improve_yourself: What inspire to improve yourself
+        who_are_you: Who are you
+        who_are_you_description: Tell us a little about yourself in one paragraph.
+        why_do_you_practice: Why do you practice
+        your_journal_is: Your journal is
       new:
         already_signed_up: Already signed up?
         time_signed_in: Time to sign in!

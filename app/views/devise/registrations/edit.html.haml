@@ -1,9 +1,15 @@
-%h1 My Profile
+%h1 
+  = t('.my_profile')
 %hr/
+- if flash.any?
+  .alert.alert-danger
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => :true, :method => :put , :class => 'form-horizontal'}) do |f|
   = devise_error_messages!
   .form-group
-    %label.col-lg-2.control-label{:for => "user_avatar"} Profile picture
+    %label.col-lg-2.control-label{:for => "user_avatar"} 
+      = t('.profile_picture') 
     .col-lg-10
       .form-group.string.optional.user_first_name
         .col-lg-12
@@ -15,58 +21,45 @@
               %em Choose File
   .update-details
     = f.submit "Update", :class => 'btn btn-lg btn-primary'
-  %h1 The Basics
+  %h1 
+    = I18n.t('devise.registrations.edit.the_basics')
   %hr/
-  = form_element(f, :first_name, 'user', "First Name", 3, { label: false })
-  = form_element(f, :last_name, 'user', "Last Name", 3, { label: false })
-  = form_element(f, :dob, 'user', "Date of Birth", 3, { as: 'date', label: false, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true, input_html: { :class => 'col-lg-1' }} )
-  = form_element(f, :gender, 'user', "Gender", 3, { collection: [['Male', 0], ['Female', 1], ['Other', 2]], as: :radio_buttons, item_wrapper_class: 'inline', label: false })
-  = form_element(f, :city, 'user', "City", 3, { label: false })
-  = form_element(f, :country, 'user', "Country", 3, { label: false })
-  = form_element(f, :website, 'user', "Website", 3, { label: false })
+  = form_element(f, :first_name, 'user', I18n.t('devise.registrations.edit.first_name'), 3, { label: false })
+  = form_element(f, :last_name, 'user', I18n.t('devise.registrations.edit.last_name'), 3, { label: false })
+  = form_element(f, :dob, 'user', I18n.t('devise.registrations.edit.date_of_bird'), 3, { as: 'date', label: false, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true, input_html: { :class => 'col-lg-1' }} )
+  = form_element(f, :gender, 'user', I18n.t('devise.registrations.edit.gender'), 3, { collection: [['Male', 0], ['Female', 1], ['Other', 2]], as: :radio_buttons, item_wrapper_class: 'inline', label: false })
+  = form_element(f, :city, 'user', I18n.t('devise.registrations.edit.city'), 3, { label: false })
+  = form_element(f, :country, 'user', I18n.t('devise.registrations.edit.country'), 3, { label: false })
+  = form_element(f, :website, 'user', I18n.t('devise.registrations.edit.website'), 3, { label: false })
   .update-details
     = f.submit "Update", :class => 'btn btn-lg btn-primary'
-  .contemplative-profile
-    %h1 Contemplative profile
-    %hr/
-    = form_element(f, :who, 'user', "Who are you?", 8, { input_html: { rows: 3 }, hint: 'Tell us a little about yourself in one paragraph.', label: false })
-    = form_element(f, :style, 'user', "Fluency style", 3, { hint: 'Mcguire Program, Delferro etc.', label: false })
-    = form_element(f, :why, 'user', "Why do you practice?", 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint: 'What inspires you to meditate?', label: false })
-    = form_element(f, :practice, 'user', "What do you practice?", 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint: 'What\'s your routine in an average sit?', label: false })
-    = form_element(f, :default_sit_length, 'user', "Default sit length", 1, { label: false })
+  %h1 
+    = I18n.t('devise.registrations.edit.iceberg_profile')
+  %hr/
+  = form_element(f, :who, 'user', I18n.t('devise.registrations.edit.who_are_you') , 8, { input_html: { rows: 3 }, hint: I18n.t('devise.registrations.edit.who_are_you_description'), label: false }) 
+  = form_element(f, :why, 'user', I18n.t('devise.registrations.edit.why_do_you_practice') , 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint:  I18n.t('devise.registrations.edit.what_inspire_to_improve_yourself'), label: false })
+  .update-details
+    = f.submit "Update", :class => 'btn btn-lg btn-primary'
+  %h1 
+    = I18n.t('devise.registrations.edit.account')
+  %hr/
+  = form_element(f, :username, 'user', I18n.t('devise.registrations.edit.username'), 3, { label: false })
+  = form_element(f, :email, 'user', I18n.t('devise.registrations.edit.email'), 3, { label: false })
   .update-details
     = f.submit "Update", :class => 'btn btn-lg btn-primary'
 .row.account-misc
-  .col-md-4
-    %h1 Export
-    %p Download all my sits in:
-    %ul
-      %li= link_to "XML format", "/u/#{current_user.username}/export.xml"
-      %li= link_to "JSON format", "/u/#{current_user.username}/export.json"
-  .col-md-4
-    %h1 Account
-    %p Warning: danger zone.
-    %ul
-      %li
-        %a{:href => "#"} Change my email address
-      %li
-        Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-  .col-md-4.privacy-setting
-    %h1 Privacy
+  .col-md-6.privacy-setting 
     %p
-      Your journal is #{@user.private_stream ? 'private' : 'public'}.
+      = I18n.t('devise.registrations.edit.your_journal_is') 
+      = @user.private_stream ? 'private' : 'public'
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :class => 'form-horizontal'}) do |f|
       - if @user.private_stream
-        = f.submit "Make it public", :class => 'btn btn-default'
+        = f.submit I18n.t('devise.registrations.edit.make_it_public'), :class => 'btn btn-default'
         %p.warning
-          This will make
-          %em all
-          of your journal public! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
+          = I18n.t('devise.registrations.edit.make_it_public_description') 
         = f.input :private_stream, :as => :hidden, :input_html => { :value => "false" }
       - else
-        = f.submit "Make it private", :class => 'btn btn-default'
+        = f.submit I18n.t('devise.registrations.edit.make_it_private'), :class => 'btn btn-default'
         %p.warning
-          This will make your journal private, meaning only you can see it. You can change this back to public at any time, but when you do
-          %em all
-          of your content will be marked as public.
+          = I18n.t('devise.registrations.edit.make_it_private_description') 
         = f.input :private_stream, :as => :hidden, :input_html => { :value => "true" }

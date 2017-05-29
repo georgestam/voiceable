@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   private
   
   def skip_pundit? #  Pundit
@@ -25,6 +27,11 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: ['first_name', 'last_name', 'avatar', 'dob(3i)', 'dob(2i)', 'dob(1i)', 'gender', 'city', 'country', 'website', 'who', 'why', 'private_stream'])
   end
   
   private

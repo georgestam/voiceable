@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   
       t.timestamp :last_login
       t.string :profile_pic
+      t.string :username
       t.string :first_name
       t.string :last_name
       t.date :dob
@@ -43,13 +44,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :country
       t.text :who
+      t.text :why
       t.text :when
-      t.text :practice
-      t.text :style
       t.boolean :public_diary
       t.integer :default_contacts
       t.string :username
       t.string :avatar
+      t.string :website
+      t.boolean :private_stream, default: false
+      
     end
 
     add_index :users, :email,                unique: true
