@@ -18,8 +18,8 @@ curl -s http://voiceable.herokuapp.com/api/v1/recordings/1 | jq
 
 curl -i -X PATCH                                           \
        -H 'Content-Type: application/json'                 \
-       -H 'X-User-Email: jordi@voiceable.io'               \
-       -H 'X-User-Token: Jr3iddz3DwsMb1UUcgpG'             \
+       -H 'X-User-Email: testing@email.com'               \
+       -H 'X-User-Token: FV1qtr6xNLUeDVZWf4bx'             \
        -d '{ "recording": { "data": "Some new Jason as string", "description": "Whatever new" } }' \
        http://voiceable.herokuapp.com/api/respira/v1/recordings/1 
   
@@ -27,7 +27,7 @@ curl -i -X PATCH                                           \
        
 curl -i -X POST                                                              \
     -H 'Content-Type: application/json'                                      \
-    -H 'X-User-Email: jordi@voiceable.io'                                    \
-    -H 'X-User-Token: Jr3iddz3DwsMb1UUcgpG'                                  \
+    -H 'X-User-Email: testing@email.com'                                    \
+    -H 'X-User-Token: FV1qtr6xNLUeDVZWf4bx'                                  \
     -d '{ "recording": { "data": "Some Jason as string", "description": "Whatever" } }' \
     http://voiceable.herokuapp.com/api/respira/v1/recordings
